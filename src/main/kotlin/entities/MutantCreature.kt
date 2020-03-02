@@ -44,19 +44,19 @@ data class MutantCreature(
         return other.kind == this.kind && (other as MutantCreature).size < this.size
     }
 
-    override fun move(){
+    override fun move() {
         var turns = 0
         val speedCeil = Math.ceil(speed)
 
-        if(speedCeil == speed){
+        if (speedCeil == speed) {
             /** speed was alread an int **/
             turns = speedCeil.toInt()
         } else {
             /** float speed -> chance to round it up **/
-            turns = (if(random.decide()) speedCeil.toInt() else speed.toInt())
+            turns = (if (random.decide()) speedCeil.toInt() else speed.toInt())
         }
 
-        for(i in 0 until turns){
+        for (i in 0 until turns) {
             super.move()
         }
     }
