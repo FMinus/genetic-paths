@@ -1,7 +1,5 @@
 import tornadofx.App
 import tornadofx.launch
-import space.World
-import java.util.*
 
 val worldSize = 14
 var foodQuantity = 50

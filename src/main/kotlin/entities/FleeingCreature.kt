@@ -1,8 +1,8 @@
 package entities
 
+import javafx.scene.paint.Color
 import space.World
 import space.WorldSlot
-import javafx.scene.paint.Color
 
 data class FleeingCreature(
     override val index: Int,
@@ -22,15 +22,15 @@ data class FleeingCreature(
         val predators = world.kingSight(2, currentSlot).filter { it.hasCreature(PredatorCreature.KIND) }
         val dangerSlots = predators.map { world.kingSight(1, it) }.flatMap { it }
         val safeSlots = world.kingSight(currentSlot).minus(dangerSlots)
-        if(safeSlots.isEmpty()){
+        if (safeSlots.isEmpty()) {
             return slotSelector(adjucantSlots)
         }
         return slotSelector(safeSlots)
     }
 
     override fun preMove(slotToMoveInto: WorldSlot) {
-        if(slotToMoveInto.hasCreature()){
-            if(random.chanceTo(50)){
+        if (slotToMoveInto.hasCreature()) {
+            if (random.chanceTo(50)) {
                 grantEnergy(slotToMoveInto.creatureInSlot!!.currentEnergy / 2)
                 slotToMoveInto.creatureInSlot!!.currentEnergy = 0.0
             }

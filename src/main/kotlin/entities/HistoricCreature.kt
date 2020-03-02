@@ -22,7 +22,7 @@ data class HistoricCreature(
     override fun selectSlotToMoveInto(): WorldSlot? {
         val possibilities = world.crossSight(currentSlot)
         val excludeVisited = possibilities.minus(visitedSlots)
-        if(excludeVisited.isEmpty()){
+        if (excludeVisited.isEmpty()) {
             return randomSlot(possibilities)
         }
         return randomSlot(excludeVisited)
@@ -30,13 +30,14 @@ data class HistoricCreature(
 
     override fun preMove(slotToMoveInto: WorldSlot) {
         visitedSlots.add(slotToMoveInto)
-        if(visitedSlots.size >= 9){
+        if (visitedSlots.size >= 9) {
             visitedSlots.removeAt(0)
         }
     }
 
     override fun hashCode(): Int = super.hashCode()
     override fun equals(other: Any?) = super.equals(other)
+
     companion object {
         val KIND = "Historic"
     }

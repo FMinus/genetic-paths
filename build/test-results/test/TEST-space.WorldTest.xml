@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="space.WorldTest" tests="23" skipped="0" failures="0" errors="0" timestamp="2019-09-24T09:08:30" hostname="Ayoubs-MacBook-Pro.local" time="0.079">
-  <properties/>
-  <testcase name="Spawning creature attachs it to slot" classname="space.WorldTest" time="0.02"/>
-  <testcase name="KingSight does not includes slots out of bounds" classname="space.WorldTest" time="0.011"/>
-  <testcase name="random Edge slot yields a random edge slot" classname="space.WorldTest" time="0.025"/>
-  <testcase name="World is Full if creatures are on more than 95% of slots" classname="space.WorldTest" time="0.001"/>
-  <testcase name="Should Retrieve all slots in the world" classname="space.WorldTest" time="0.005"/>
-  <testcase name="Cross Sight Works in World Corner" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Chance to put down food when quantity requested not yet reached - false case" classname="space.WorldTest" time="0.002"/>
-  <testcase name="Disallow putting down food when requested quantity below zero" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Chance to put down food when quantity requested not yet reached - true case" classname="space.WorldTest" time="0.0"/>
-  <testcase name="An index is not edge if index != worldEnd &amp;&amp; index != 0" classname="space.WorldTest" time="0.001"/>
-  <testcase name="An index is edge if index == 0" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Should Retrieve all food slots in the world - no food in the world" classname="space.WorldTest" time="0.001"/>
-  <testcase name="Gives slots with creatures in them - no creatures" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Count remaining creatures returns creatures list size" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Edge slots have an X index of 0 and Y at worldEnd or vice versa" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Disallow putting down food when requested quantity is zero" classname="space.WorldTest" time="0.001"/>
-  <testcase name="Empty creatures list means all creatures are dead - dead world" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Should Count Food In the world - has one food" classname="space.WorldTest" time="0.001"/>
-  <testcase name="Killing creature removes it from list" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Should Retrieve all food slots in the world" classname="space.WorldTest" time="0.0"/>
-  <testcase name="Should Count Food In the world empty" classname="space.WorldTest" time="0.0"/>
-  <testcase name="An index is edge if index == worldEnd" classname="space.WorldTest" time="0.0"/>
-  <testcase name="KingSight grants vision of all surrounding slots to a creature" classname="space.WorldTest" time="0.001"/>
-  <system-out><![CDATA[WARNING: Class 'space.WorldTest' doesn't have either OpenedPackages nor OpenedClasses annotation. Failing back to current package.
+<testsuite name="space.WorldTest" tests="23" skipped="0" failures="0" errors="0" timestamp="2019-09-24T09:08:30"
+           hostname="Ayoubs-MacBook-Pro.local" time="0.079">
+    <properties/>
+    <testcase name="Spawning creature attachs it to slot" classname="space.WorldTest" time="0.02"/>
+    <testcase name="KingSight does not includes slots out of bounds" classname="space.WorldTest" time="0.011"/>
+    <testcase name="random Edge slot yields a random edge slot" classname="space.WorldTest" time="0.025"/>
+    <testcase name="World is Full if creatures are on more than 95% of slots" classname="space.WorldTest" time="0.001"/>
+    <testcase name="Should Retrieve all slots in the world" classname="space.WorldTest" time="0.005"/>
+    <testcase name="Cross Sight Works in World Corner" classname="space.WorldTest" time="0.0"/>
+    <testcase name="Chance to put down food when quantity requested not yet reached - false case"
+              classname="space.WorldTest" time="0.002"/>
+    <testcase name="Disallow putting down food when requested quantity below zero" classname="space.WorldTest"
+              time="0.0"/>
+    <testcase name="Chance to put down food when quantity requested not yet reached - true case"
+              classname="space.WorldTest" time="0.0"/>
+    <testcase name="An index is not edge if index != worldEnd &amp;&amp; index != 0" classname="space.WorldTest"
+              time="0.001"/>
+    <testcase name="An index is edge if index == 0" classname="space.WorldTest" time="0.0"/>
+    <testcase name="Should Retrieve all food slots in the world - no food in the world" classname="space.WorldTest"
+              time="0.001"/>
+    <testcase name="Gives slots with creatures in them - no creatures" classname="space.WorldTest" time="0.0"/>
+    <testcase name="Count remaining creatures returns creatures list size" classname="space.WorldTest" time="0.0"/>
+    <testcase name="Edge slots have an X index of 0 and Y at worldEnd or vice versa" classname="space.WorldTest"
+              time="0.0"/>
+    <testcase name="Disallow putting down food when requested quantity is zero" classname="space.WorldTest"
+              time="0.001"/>
+    <testcase name="Empty creatures list means all creatures are dead - dead world" classname="space.WorldTest"
+              time="0.0"/>
+    <testcase name="Should Count Food In the world - has one food" classname="space.WorldTest" time="0.001"/>
+    <testcase name="Killing creature removes it from list" classname="space.WorldTest" time="0.0"/>
+    <testcase name="Should Retrieve all food slots in the world" classname="space.WorldTest" time="0.0"/>
+    <testcase name="Should Count Food In the world empty" classname="space.WorldTest" time="0.0"/>
+    <testcase name="An index is edge if index == worldEnd" classname="space.WorldTest" time="0.0"/>
+    <testcase name="KingSight grants vision of all surrounding slots to a creature" classname="space.WorldTest"
+              time="0.001"/>
+    <system-out><![CDATA[WARNING: Class 'space.WorldTest' doesn't have either OpenedPackages nor OpenedClasses annotation. Failing back to current package.
 ]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+    <system-err><![CDATA[]]></system-err>
 </testsuite>

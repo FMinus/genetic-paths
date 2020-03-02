@@ -1,8 +1,8 @@
 package entities
 
+import javafx.scene.paint.Color
 import space.World
 import space.WorldSlot
-import javafx.scene.paint.Color
 import space.noCreatureSlots
 
 val CHANCE_TO_PREY = 80
@@ -23,16 +23,16 @@ data class PredatorCreature(
 
     override fun selectSlotToMoveInto(): WorldSlot? {
         val adjucantSlots = world.crossSight(currentSlot)
-        val prey = adjucantSlots.filter { it.hasCreature() && !it.hasCreature(this.kind)}
-        if(prey.isEmpty()){
+        val prey = adjucantSlots.filter { it.hasCreature() && !it.hasCreature(this.kind) }
+        if (prey.isEmpty()) {
             return slotSelector(adjucantSlots.noCreatureSlots())
         }
         return slotSelector(prey)
     }
 
     override fun preMove(slotToMoveInto: WorldSlot) {
-        if(slotToMoveInto.hasCreature() && random.chanceTo(CHANCE_TO_PREY)) {
-            grantEnergy(slotToMoveInto.creatureEnergy()/ 2)
+        if (slotToMoveInto.hasCreature() && random.chanceTo(CHANCE_TO_PREY)) {
+            grantEnergy(slotToMoveInto.creatureEnergy() / 2)
             world.killCreature(slotToMoveInto.creatureInSlot!!)
         }
     }

@@ -1,8 +1,8 @@
 package entities
 
+import javafx.scene.paint.Color
 import space.World
 import space.WorldSlot
-import javafx.scene.paint.Color
 
 data class ShareCreature(
     override val index: Int,
@@ -20,10 +20,11 @@ data class ShareCreature(
     override val chanceToReplicate: Int = 5
 
     override fun preMove(slotToMoveInto: WorldSlot) {
-        val sameKind = world.kingSight(1, currentSlot).filter { it.hasCreature(this.kind) && daysSurvived == it.creatureInSlot!!.daysSurvived}
-        if(sameKind.isNotEmpty()){
+        val sameKind = world.kingSight(1, currentSlot)
+            .filter { it.hasCreature(this.kind) && daysSurvived == it.creatureInSlot!!.daysSurvived }
+        if (sameKind.isNotEmpty()) {
             var groupEnergyAverage = (sameKind.map { it.creatureEnergy() }.sum() + this.currentEnergy) / sameKind.size
-            if(groupEnergyAverage > 50.0){
+            if (groupEnergyAverage > 50.0) {
                 groupEnergyAverage = 50.0
             }
             currentEnergy = groupEnergyAverage

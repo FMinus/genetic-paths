@@ -3,7 +3,13 @@ package space
 import entities.Creature
 import kotlin.math.abs
 
-data class WorldSlot(var x: Int, var y: Int, val worldSize: Int, var hasFood: Boolean = false, var creatureInSlot: Creature? = null) {
+data class WorldSlot(
+    var x: Int,
+    var y: Int,
+    val worldSize: Int,
+    var hasFood: Boolean = false,
+    var creatureInSlot: Creature? = null
+) {
     fun slotValue(): Int {
         return if (hasFood) 1 else 0
     }
@@ -19,7 +25,7 @@ data class WorldSlot(var x: Int, var y: Int, val worldSize: Int, var hasFood: Bo
     fun isSpawnCandidate() = isOnEdge() && !hasCreature()
 
     fun creatureEnergy(): Double {
-        if(creatureInSlot != null){
+        if (creatureInSlot != null) {
             return creatureInSlot!!.currentEnergy
         }
         return 0.0

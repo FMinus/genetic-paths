@@ -34,7 +34,7 @@ class WorldTest {
     }
 
     @Test
-    fun `KingSight grants vision of all surrounding slots to a creature`(){
+    fun `KingSight grants vision of all surrounding slots to a creature`() {
 
         val kingSight = world.kingSight(creature.currentSlot)
             .map { it.x to it.y }
@@ -53,7 +53,7 @@ class WorldTest {
     }
 
     @Test
-    fun `KingSight does not includes slots out of bounds`(){
+    fun `KingSight does not includes slots out of bounds`() {
 
         val corner = world.getSlot(worldEnd, worldEnd)
         creature.currentSlot = corner
@@ -73,7 +73,7 @@ class WorldTest {
 
 
     @Test
-    fun `Cross Sight Works in World Corner`(){
+    fun `Cross Sight Works in World Corner`() {
 
         val corner = world.getSlot(0, 0)
         creature.currentSlot = corner
@@ -91,7 +91,7 @@ class WorldTest {
     }
 
     @Test
-    fun `Killing creature removes it from list`(){
+    fun `Killing creature removes it from list`() {
         val corner = world.getSlot(0, 0)
         world.spawn(creature, corner)
         world.killCreature(creature)
@@ -99,19 +99,19 @@ class WorldTest {
     }
 
     @Test
-    fun `Empty creatures list means all creatures are dead - dead world`(){
+    fun `Empty creatures list means all creatures are dead - dead world`() {
         world.creatures.clear()
         assertTrue(world.deadWorld())
     }
 
     @Test
-    fun `Should Count Food In the world empty`(){
+    fun `Should Count Food In the world empty`() {
         resetFoodSlots()
         assertEquals(0, world.countRemainingFood())
     }
 
     @Test
-    fun `Should Count Food In the world - has one food`(){
+    fun `Should Count Food In the world - has one food`() {
         resetFoodSlots()
         val corner = world.getSlot(0, 0)
         corner.hasFood = true
@@ -119,85 +119,85 @@ class WorldTest {
     }
 
     @Test
-    fun `Should Retrieve all slots in the world`(){
+    fun `Should Retrieve all slots in the world`() {
         resetFoodSlots()
         val allSlots: List<WorldSlot> = world.slotsList()
         assertFalse(allSlots.isEmpty())
-        assertEquals(worldSize * worldSize ,allSlots.size)
+        assertEquals(worldSize * worldSize, allSlots.size)
     }
 
     @Test
-    fun `Should Retrieve all food slots in the world - no food in the world`(){
+    fun `Should Retrieve all food slots in the world - no food in the world`() {
         resetFoodSlots()
         val allSlots: List<WorldSlot> = world.slotsList()
         assertTrue(allSlots.foodSlots().isEmpty())
     }
 
     @Test
-    fun `Should Retrieve all food slots in the world`(){
+    fun `Should Retrieve all food slots in the world`() {
         resetFoodSlots()
         val allSlots: List<WorldSlot> = world.slotsList()
         val onlyFood = allSlots.get(0)
         onlyFood.hasFood = true
 
         val foodSlots = allSlots.foodSlots()
-        assertEquals(listOf(onlyFood) ,foodSlots)
+        assertEquals(listOf(onlyFood), foodSlots)
     }
 
     @Test
-    fun `Count remaining creatures returns creatures list size`(){
-       assertEquals(world.creatures.size, world.countRemainingCreatures())
+    fun `Count remaining creatures returns creatures list size`() {
+        assertEquals(world.creatures.size, world.countRemainingCreatures())
     }
 
     @Test
-    fun `Disallow putting down food when requested quantity is zero`(){
+    fun `Disallow putting down food when requested quantity is zero`() {
         val shouldHaveFood = world.shouldHaveFood(0)
         assertFalse(shouldHaveFood)
     }
 
     @Test
-    fun `Disallow putting down food when requested quantity below zero`(){
+    fun `Disallow putting down food when requested quantity below zero`() {
         val shouldHaveFood = world.shouldHaveFood(-1)
         assertFalse(shouldHaveFood)
     }
 
     @Test
-    fun `Chance to put down food when quantity requested not yet reached - true case`(){
+    fun `Chance to put down food when quantity requested not yet reached - true case`() {
         whenever(random.chanceTo(any())).thenReturn(true)
         val shouldHaveFood = world.shouldHaveFood(10)
         assertTrue(shouldHaveFood)
     }
 
     @Test
-    fun `Chance to put down food when quantity requested not yet reached - false case`(){
+    fun `Chance to put down food when quantity requested not yet reached - false case`() {
         whenever(random.chanceTo(any())).thenReturn(false)
         val shouldHaveFood = world.shouldHaveFood(10)
         assertFalse(shouldHaveFood)
     }
 
     @Test
-    fun `Edge slots have an X index of 0 and Y at worldEnd or vice versa`(){
-       val edges = world.edgeSlots()
-       assertTrue(edges.all { (it.x == 0 || it.y == 0 || it.x == worldEnd || it.y == worldEnd)})
+    fun `Edge slots have an X index of 0 and Y at worldEnd or vice versa`() {
+        val edges = world.edgeSlots()
+        assertTrue(edges.all { (it.x == 0 || it.y == 0 || it.x == worldEnd || it.y == worldEnd) })
     }
 
     @Test
-    fun `An index is edge if index == 0`(){
+    fun `An index is edge if index == 0`() {
         assertTrue(world.isEdgeIndex(0))
     }
 
     @Test
-    fun `An index is edge if index == worldEnd`(){
+    fun `An index is edge if index == worldEnd`() {
         assertTrue(world.isEdgeIndex(worldEnd))
     }
 
     @Test
-    fun `An index is not edge if index != worldEnd && index != 0`(){
+    fun `An index is not edge if index != worldEnd && index != 0`() {
         assertFalse(world.isEdgeIndex(worldCenter))
     }
 
     @Test
-    fun `Spawning creature attachs it to slot`(){
+    fun `Spawning creature attachs it to slot`() {
         val corner = world.getSlot(0, 0)
         world.spawn(creature, corner)
 
@@ -208,7 +208,7 @@ class WorldTest {
     }
 
     @Test
-    fun `World is Full if creatures are on more than 95% of slots`(){
+    fun `World is Full if creatures are on more than 95% of slots`() {
         val smallWorld = World(worldSize = 2, random = random)
         smallWorld.initSlots()
         smallWorld.spawn(creature, smallWorld.getSlot(0, 0))
@@ -218,7 +218,7 @@ class WorldTest {
     }
 
     @Test
-    fun `Gives slots with creatures in them - no creatures`(){
+    fun `Gives slots with creatures in them - no creatures`() {
         val smallWorld = World(worldSize = 2, random = random)
         smallWorld.initSlots()
         val allSlots = smallWorld.slotsList()
@@ -229,11 +229,11 @@ class WorldTest {
     }
 
     fun resetFoodSlots() {
-        iterateSlots {it.hasFood = false}
+        iterateSlots { it.hasFood = false }
     }
 
     @Test
-    fun `random Edge slot yields a random edge slot`(){
+    fun `random Edge slot yields a random edge slot`() {
         val edges = world.edgeSlots()
         val corner = edges[0]
         whenever(random.of(edges)).thenReturn(corner)
@@ -241,7 +241,7 @@ class WorldTest {
     }
 
 
-    fun iterateSlots(action: (WorldSlot) -> Unit){
+    fun iterateSlots(action: (WorldSlot) -> Unit) {
         world.slots.forEach { (_, slotsLine) ->
             slotsLine.forEach {
                 action(it)

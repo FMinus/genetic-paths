@@ -1,8 +1,6 @@
 package entities
 
 import RandomGenerator
-import space.World
-import space.WorldSlot
 import com.nhaarman.mockito_kotlin.mock
 import de.jodamob.kotlin.testrunner.KotlinTestRunner
 import junit.framework.Assert.assertEquals
@@ -10,6 +8,8 @@ import junit.framework.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import space.World
+import space.WorldSlot
 
 @RunWith(KotlinTestRunner::class)
 class CreatureTest {
@@ -36,25 +36,22 @@ class CreatureTest {
     }
 
     @Test
-    fun `Test instantiation works` (){
+    fun `Test instantiation works`() {
         assertEquals(creatureName, creature.name)
     }
 
     @Test
-    fun `working hashcode`(){
+    fun `working hashcode`() {
         val hashCode = creature.hashCode()
         assertNotNull(hashCode)
     }
 
     @Test
-    fun `Grant energy adds to current creature's energy`(){
+    fun `Grant energy adds to current creature's energy`() {
         val grantValue = 5.0
         creature.grantEnergy(grantValue)
         assertEquals(initialEnergy + grantValue, creature.currentEnergy)
     }
-
-
-
 
 
 }

@@ -1,7 +1,7 @@
 package space
 
 import RandomGenerator
-import entities.*
+import entities.Creature
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.math.floor
 
@@ -25,7 +25,7 @@ open class World(
         return random.chanceTo(35)
     }
 
-    fun edgeSlots() = slotsList().filter { it.isSpawnCandidate()}
+    fun edgeSlots() = slotsList().filter { it.isSpawnCandidate() }
 
     fun randomEdgeSlot(): WorldSlot? = random.of(edgeSlots().noCreatureSlots())
 
@@ -33,12 +33,12 @@ open class World(
 
     fun isEdgeIndex(index: Int) = index == 0 || index == worldEnd
 
-    fun killCreature(creature: Creature){
+    fun killCreature(creature: Creature) {
         creature.currentSlot.creatureInSlot = null
         creatures.remove(creature)
     }
 
-    fun spawn(creature: Creature, slot: WorldSlot){
+    fun spawn(creature: Creature, slot: WorldSlot) {
         creature.currentSlot = slot
         slot.creatureInSlot = creature
         creatures.add(creature)
@@ -65,9 +65,8 @@ open class World(
             slot.x - 1 to slot.y,
             slot.x + 1 to slot.y,
             slot.x to slot.y - 1,
-            slot.x  to slot.y + 1
-        ).filter { (x, y) -> validSlotCoordinates(x, y) }.
-            map { (x, y) -> getSlot(x, y) }
+            slot.x to slot.y + 1
+        ).filter { (x, y) -> validSlotCoordinates(x, y) }.map { (x, y) -> getSlot(x, y) }
     }
 
     fun kingSight(range: Int, worldSlot: WorldSlot): List<WorldSlot> {

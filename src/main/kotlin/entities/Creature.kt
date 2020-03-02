@@ -40,7 +40,7 @@ abstract class Creature(
         currentSlot = newSlot
     }
 
-    private fun eat(slot: WorldSlot){
+    private fun eat(slot: WorldSlot) {
         if (slot.hasFood) {
             grantEnergy(energyGainPerFood)
             slot.hasFood = false
@@ -92,7 +92,7 @@ abstract class Creature(
     fun outOfEnergy() = currentEnergy < energySpentPerMove
 
     fun grantEnergy(grantValue: Double) {
-            if (currentEnergy < MAX_ENERGY)
+        if (currentEnergy < MAX_ENERGY)
             currentEnergy += grantValue
     }
 
@@ -111,7 +111,6 @@ abstract class Creature(
 
     open fun replicateInto() = this.kind to 100
     open fun mutate() {}
-
 
 
     override fun hashCode(): Int = name.hashCode() * 31 + index + color.hashCode() + kind.hashCode()

@@ -1,8 +1,8 @@
 package entities
 
+import javafx.scene.paint.Color
 import space.World
 import space.WorldSlot
-import javafx.scene.paint.Color
 
 data class PriorityCreature(
     override val index: Int,

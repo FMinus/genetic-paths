@@ -1,7 +1,6 @@
 import entities.*
 import space.World
 import space.WorldSlot
-import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.random.Random
 
 
@@ -102,7 +101,14 @@ class Simulation(
     fun spawnMutant(index: Int, worldSlot: WorldSlot, original: MutantCreature?): MutantCreature {
         val size = original?.size ?: 1.0
         val speed = original?.speed ?: 1.0
-        return MutantCreature(index = creatures.size, name = "C$index", world = world, currentSlot = worldSlot, size = size, speed = speed)
+        return MutantCreature(
+            index = creatures.size,
+            name = "C$index",
+            world = world,
+            currentSlot = worldSlot,
+            size = size,
+            speed = speed
+        )
     }
 
     fun recordCreature(creature: Creature, slot: WorldSlot) {
@@ -120,7 +126,7 @@ class Simulation(
         }
     }
 
-    fun replicate(creature: Creature){
+    fun replicate(creature: Creature) {
         if (creature.shouldReplicate()) {
             val replicateInto = creature.replicateInto()
             if (random.chanceTo(replicateInto.second)) {
@@ -133,11 +139,10 @@ class Simulation(
     }
 
 
-
     fun singleRun() {
 
         val iterator = creatures.iterator()
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             val creature = iterator.next()
             moveCreature(creature)
             replicate(creature)
@@ -165,7 +170,9 @@ class Simulation(
     }
 
     fun setHistoryData(kind: String, day: Int, value: Int) {
-        when {creatureCountHistory[kind] == null -> creatureCountHistory[kind] = mutableMapOf() }
+        when {
+            creatureCountHistory[kind] == null -> creatureCountHistory[kind] = mutableMapOf()
+        }
         creatureCountHistory[kind]!![day] = value
     }
 

@@ -1,8 +1,8 @@
 package entities
 
+import javafx.scene.paint.Color
 import space.World
 import space.WorldSlot
-import javafx.scene.paint.Color
 
 data class MortalCreature(
     override val index: Int,
@@ -30,6 +30,7 @@ data class MortalCreature(
 
     override fun hashCode(): Int = super.hashCode()
     override fun equals(other: Any?) = super.equals(other)
+
     companion object {
         val KIND = "Mortal"
     }

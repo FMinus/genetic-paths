@@ -132,11 +132,10 @@ class FitnessEvolutionGraph : View() {
         }
 
 
-
     fun mutantTable(): VBox {
         val mutants = simulation.mutants()
-        if(mutants.isEmpty()){
-            return vbox {  }
+        if (mutants.isEmpty()) {
+            return vbox { }
         }
         val averageSize = mutants.map { it.size }.average().round()
         val averageSpeed = mutants.map { it.speed }.average().round()
@@ -169,7 +168,8 @@ class FitnessEvolutionGraph : View() {
             vbox {
                 for (yIndex in 0 until worldSize) {
                     val slot = simulation.world.getSlot(xIndex, yIndex)
-                    val worldSlotView = WorldSlotView(slot.hasFood, slot.hasCreature(), slotLabel(slot), slotColor(slot))
+                    val worldSlotView =
+                        WorldSlotView(slot.hasFood, slot.hasCreature(), slotLabel(slot), slotColor(slot))
                     this.add(worldSlotView)
                     slotsGraphics[xIndex]!!.add(yIndex, worldSlotView)
                 }

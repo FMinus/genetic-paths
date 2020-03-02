@@ -1,9 +1,9 @@
 package entities
 
+import javafx.scene.paint.Color
 import space.World
 import space.WorldSlot
 import space.foodSlots
-import javafx.scene.paint.Color
 import space.noCreatureSlots
 
 data class SightCreature(
@@ -22,9 +22,9 @@ data class SightCreature(
     override fun selectSlotToMoveInto(): WorldSlot? {
         val adjucantSlots = world.kingSight(currentSlot).noCreatureSlots()
         val foodSlots = adjucantSlots.foodSlots()
-        if(foodSlots.isEmpty()){
+        if (foodSlots.isEmpty()) {
             val foodInSight = world.kingSight(2, currentSlot).foodSlots()
-            return if (foodInSight.isNotEmpty() && adjucantSlots.isNotEmpty()){
+            return if (foodInSight.isNotEmpty() && adjucantSlots.isNotEmpty()) {
                 adjucantSlots.minBy { it.distanceTo(foodInSight.first()) }
             } else {
                 slotSelector(adjucantSlots)
@@ -39,6 +39,7 @@ data class SightCreature(
 
     override fun hashCode(): Int = super.hashCode()
     override fun equals(other: Any?) = super.equals(other)
+
     companion object {
         val KIND = "Sight"
     }
